@@ -9,11 +9,17 @@
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
         <property name="connection.url">jdbc:sqlserver://ADMIN-767TKS5A7\E470</property>
-        <property name="hibernate.connection.username">MyUser</property>
-        <property name="hibernate.connection.password">MyPassword</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password">exbcmytktybcm</property>
 
         <property name="show_sql">true</property>
         <!--Meduni-->
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsItems"/>
+        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsItemVer"/>-->
+        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLink"/>-->
+        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLinkVer"/>-->
+        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.UniClient"/>-->
         <!--Medis-->
+
     </session-factory>
 </hibernate-configuration>

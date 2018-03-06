@@ -11,6 +11,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import org.hibernate.Session;
+import ru.alex.utils.HibernateSessionfactory;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -24,20 +26,9 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
-        
-        layout.addComponents(name, button);
-        
-        setContent(layout);
+        Session session = HibernateSessionfactory.getSession();
+        session.createQuery("from ru.alex.Entity.MedUni.AutoGenerate.SubsItems").getResultList();
+        System.out.println("query");
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
