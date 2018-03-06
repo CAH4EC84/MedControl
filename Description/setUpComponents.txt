@@ -1,0 +1,46 @@
+# MedControl
+Java Web Application for Medline
+Данный файл лучше смотреть в разметке RAW иначе он норовит съесть теги.
+Создаем проект Vaadin через Maven vaadin-archetype-application
+
+Подключаем Hibernate через зависимости Maven, в pom.xml
+<!--Добавляем зависимости для MS SQL, Hibernate-->
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.2.12.Final</version>
+</dependency>
+<dependency>
+	<groupId>com.microsoft.sqlserver</groupId>
+	<artifactId>mssql-jdbc</artifactId>
+	<version>6.2.2.jre8</version>
+</dependency>
+    
+Создаем файл конфигурации для Hibernate в \resources\hibernate.cfg.xml
+ 
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hbm2ddl.auto">validate</property>
+
+       <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+        <property name="connection.url">jdbc:sqlserver://ADMIN-767TKS5A7\E470</property>
+        <property name="hibernate.connection.username">MyUser</property>
+        <property name="hibernate.connection.password">MyPassword</property>
+
+        <property name="show_sql">true</property>
+<!--Tables-->
+     <!--Meduni-->
+        <mapping class="ru.alex.Entity.Hibernate.MedUni.DBOSubsList"/>
+        <mapping class="ru.alex.Entity.Hibernate.MedUni.DBOuniClient"/>
+
+     <!--Medis-->
+        <mapping class="ru.alex.Entity.Hibernate.Medis.DBOFirms"/>
+    </session-factory>
+</hibernate-configuration>
+
+После создания данного  файла Intellij Idea Ultimate обнаружит подключенный фреймворк
