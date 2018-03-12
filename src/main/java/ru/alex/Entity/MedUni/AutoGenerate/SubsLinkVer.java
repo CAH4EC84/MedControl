@@ -1,12 +1,10 @@
 package ru.alex.Entity.MedUni.AutoGenerate;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "subsLinkVer", schema = "dbo", catalog = "MedUni")
 public class SubsLinkVer {
     private Integer id;
     private Integer linkId;

@@ -6,13 +6,12 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import org.hibernate.Session;
+import ru.alex.Entity.MedUni.Complex.SubsDetails;
 import ru.alex.utils.HibernateSessionfactory;
+
+import java.util.List;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -26,9 +25,14 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+
+        //TODO ckeck constructor  for SubsDetails
         Session session = HibernateSessionfactory.getSession();
-        session.createQuery("from ru.alex.Entity.MedUni.AutoGenerate.SubsItems").getResultList();
-        System.out.println("query");
+
+
+        SubsDetails details = new SubsDetails();
+        String sql = details.getHQL("2");
+        List<SubsDetails> list = session.createQuery(sql).getResultList();
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

@@ -1,13 +1,11 @@
 package ru.alex.Entity.MedUni.AutoGenerate;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "uniClient", schema = "dbo", catalog = "MedUni")
 public class UniClient {
     private Integer id;
     private String name;
@@ -41,7 +39,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "name", nullable = true, length = 255)
+    @Column(name = "name", nullable = true, columnDefinition = "NVARCHAR()")
     public String getName() {
         return name;
     }
@@ -51,7 +49,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "name_short", nullable = true, length = 20)
+    @Column(name = "name_short", nullable = true, columnDefinition = "NVARCHAR()")
     public String getNameShort() {
         return nameShort;
     }
@@ -61,7 +59,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "phone", nullable = true, length = 50)
+    @Column(name = "phone", nullable = true, columnDefinition = "NVARCHAR()")
     public String getPhone() {
         return phone;
     }
@@ -71,7 +69,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "fax", nullable = true, length = 20)
+    @Column(name = "fax", nullable = true, columnDefinition = "NVARCHAR()")
     public String getFax() {
         return fax;
     }
@@ -81,7 +79,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "email", nullable = true, length = 30)
+    @Column(name = "email", nullable = true, columnDefinition = "NVARCHAR()")
     public String getEmail() {
         return email;
     }
@@ -91,7 +89,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "addr", nullable = true, length = 40)
+    @Column(name = "addr", nullable = true, columnDefinition = "NVARCHAR()")
     public String getAddr() {
         return addr;
     }
@@ -131,7 +129,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "meneger", nullable = true, length = 40)
+    @Column(name = "meneger", nullable = true, columnDefinition = "NVARCHAR()")
     public String getMeneger() {
         return meneger;
     }
@@ -141,7 +139,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "rem", nullable = true, length = 60)
+    @Column(name = "rem", nullable = true, columnDefinition = "NVARCHAR()")
     public String getRem() {
         return rem;
     }
@@ -151,7 +149,7 @@ public class UniClient {
     }
 
     @Basic
-    @Column(name = "minZakaz", nullable = true, precision = 4)
+    @Column(name = "minZakaz", nullable = true, columnDefinition = "DECIMAL()")
     public BigDecimal getMinZakaz() {
         return minZakaz;
     }

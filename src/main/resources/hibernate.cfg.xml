@@ -15,10 +15,10 @@
         <property name="show_sql">true</property>
         <!--Meduni-->
         <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsItems"/>
-        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsItemVer"/>-->
-        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLink"/>-->
-        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLinkVer"/>-->
-        <!--<mapping class="ru.alex.Entity.MedUni.AutoGenerate.UniClient"/>-->
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsItemVer"/>
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLink"/>
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLinkVer"/>
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.UniClient"/>
         <!--Medis-->
 
     </session-factory>
