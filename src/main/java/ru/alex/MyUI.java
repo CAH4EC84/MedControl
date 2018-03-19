@@ -4,12 +4,19 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.icons.VaadinIcons;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 import org.hibernate.Session;
-import ru.alex.Entity.MedUni.Complex.SubsDetails;
-import ru.alex.utils.HibernateSessionfactory;
+import ru.alex.Utils.HibernateSessionfactory;
+import ru.alex.Views.DefaultPage;
+import ru.alex.Views.FirmsPage;
+import ru.alex.Views.ReportPage;
+import ru.alex.Views.SubscriptionPage;
 
 import java.util.List;
 
@@ -25,14 +32,31 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-
-        //TODO ckeck constructor  for SubsDetails
         Session session = HibernateSessionfactory.getSession();
+        VerticalLayout screen = new VerticalLayout();
+        VerticalLayout views = new VerticalLayout();
+
+        //ƒоступные дл€ навигации представлени€
+        Navigator navigator= new Navigator(this,views);
+        navigator.addView("",new DefaultPage());
+        navigator.addView("subs",new SubscriptionPage(session));
+        navigator.addView("firms",new FirmsPage());
+        navigator.addView("reports",new ReportPage());
+
+        //ћеню дл€ навигации по представлени€м
+        MenuBar menu = new MenuBar();
+        MenuBar.MenuItem homeMenu = menu.addItem("", VaadinIcons.HOME,Hclick->navigator.navigateTo(""));
+        MenuBar.MenuItem subsMenu = menu.addItem("subs", VaadinIcons.HOME,Sclick->navigator.navigateTo("subs"));
+        MenuBar.MenuItem firmMenu = menu.addItem("firms", VaadinIcons.HOME,Fclick->navigator.navigateTo("firms"));
+        MenuBar.MenuItem reportMenu = menu.addItem("reports", VaadinIcons.HOME,Rclick->navigator.navigateTo("reports"));
+
+        views.setSpacing(false);
+        views.setMargin(false);
+        screen.addComponents(menu,views);
+        setContent(screen);
 
 
-        SubsDetails details = new SubsDetails();
-        String sql = details.getHQL("2");
-        List<SubsDetails> list = session.createQuery(sql).getResultList();
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

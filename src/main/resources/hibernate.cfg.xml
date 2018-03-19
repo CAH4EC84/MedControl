@@ -19,6 +19,8 @@
         <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLink"/>
         <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsLinkVer"/>
         <mapping class="ru.alex.Entity.MedUni.AutoGenerate.UniClient"/>
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsList"/>
+        <mapping class="ru.alex.Entity.MedUni.AutoGenerate.SubsVer"/>
         <!--Medis-->
 
     </session-factory>

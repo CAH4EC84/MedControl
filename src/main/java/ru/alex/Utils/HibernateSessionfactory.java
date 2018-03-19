@@ -1,4 +1,4 @@
-package ru.alex.utils;
+package ru.alex.Utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

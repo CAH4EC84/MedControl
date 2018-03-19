@@ -41,20 +41,18 @@ public class SubsDetails implements dynBaseObject {
     }
 
 
-    @Override
-    public LinkedHashMap<String, Double> visibleColumnsOrder() {
+
+    public static LinkedHashMap<String, Double> visibleColumnsOrder() {
         LinkedHashMap<String,Double> visibleColumns = new LinkedHashMap<>();
         visibleColumns.put("id",100.0);
         visibleColumns.put("subsId",100.0);
         visibleColumns.put("name",300.0);
         visibleColumns.put("nodeFirm",100.0);
         visibleColumns.put("docType",100.0);
-
         visibleColumns.put("readTimeOf",300.0);
         visibleColumns.put("baseTimeOf",300.0);
         visibleColumns.put("baseFile",300.0);
         visibleColumns.put("errorText",300.0);
-
         visibleColumns.put("actualDays",100.0);
         visibleColumns.put("linkIsActive",100.0);
         visibleColumns.put("firmIsActive",100.0);
@@ -62,19 +60,19 @@ public class SubsDetails implements dynBaseObject {
         return visibleColumns;
     }
 
-    @Override
-    public String getObjectType() {
+
+    public static String getObjectType() {
         return "complex";
     }
 
-    @Override
-    public String getHQL() {
+
+    public static String getHQL() {
         StringBuilder query = new StringBuilder();
         query.append(getSelectPart() + getWherePart() + getGroupPart() + getOrderPart());
         return query.toString();
     }
 
-    public String getHQL( String parentTableId) {
+    public static String getHQL( String parentTableId) {
         StringBuilder query = new StringBuilder();
         query.append(getSelectPart() + getWherePart() + getGroupPart() + getOrderPart());
         return query.toString().replace(":parentTableId",parentTableId);
